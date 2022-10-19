@@ -1,0 +1,18 @@
+$positions: "t", "r," "b", "l";
+$positionsMap: ("t": "top", "r": "right", "b": "bottom", "l": "left");
+
+@each $posChar, $posString  in $positionsMap {
+    @for $i from 1 through 16 {
+        .m#{$posChar}-#{$i} {
+            margin-#{$posString}: $i*0.25rem;
+        }
+    }
+}
+
+@each $posChar, $posString  in $positionsMap {
+    @for $i from 1 through 16 {
+        .p#{$posChar}-#{$i} {
+            padding-#{$posString}: $i*0.25rem;
+        }
+    }
+}

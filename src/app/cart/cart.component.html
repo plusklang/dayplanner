@@ -1,0 +1,67 @@
+<h2>Cart</h2>
+
+
+<p>
+    <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
+<div class="cart-item" *ngFor="let product of items">
+
+    <a
+            [title]="product.name + ' details'"
+            [routerLink]="['/products', product.id]"
+            class="block mb-4"
+    >
+        {{ product.name }}
+    </a>
+    <div>
+        <button (click)="cartService.alterAmount(product.id, false)">-</button>
+        Amount: {{ product.amount }}
+        <button (click)="cartService.alterAmount(product.id, true)">+</button>
+    </div>
+    <p>
+        Total price: {{ product.amount * product.price }} €
+    </p>
+    <button (click)="removeCartItem(product.id)">Remove item</button>
+
+</div>
+
+<div>
+    <b>Total price: {{ cartService.totalPrice }} €</b>
+</div>
+
+<button class="mt-4" (click)="clearCart()">Clear cart</button>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="mt-8">
+    <div>
+        <label for="name">
+            Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div>
+        <label for="address">
+            Address
+        </label>
+        <input id="address" type="text" formControlName="address">
+    </div>
+    <button class="button" type="submit">Purchase</button>
+
+</form>
+
+<div class="test-item" *ngFor="let item of testResults | async">
+    <div class="result">
+        <span>ID: </span>
+        <span>{{ item.id }}</span>
+    </div>
+    <div>
+        <span>Foo: </span>
+        <span>{{ item.foo }}</span>
+    </div>
+</div>
+<div>
+    <span>Number results:</span>
+    <span>{{ numResults }}</span>
+</div>
+
