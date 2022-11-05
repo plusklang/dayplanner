@@ -1,1 +1,7 @@
-<p>Hello {{ auth.userName }}!</p>
+<p>Hello {{ auth.user.username }}!</p>
+<p>Your tasks for today:</p>
+<ul>
+    <li *ngFor="let task of tasks">
+        {{ task.title }}
+    </li>
+</ul>

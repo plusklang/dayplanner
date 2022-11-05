@@ -1,0 +1,38 @@
+/* Button */
+.btn, button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+
+    &.is--secondary {
+        background-color: #888;
+    }
+}
+
+.btn:hover, button:hover {
+    opacity: 0.8;
+    font-weight: normal;
+}
+
+.btn:disabled, button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+/* Fancy Button */
+
+.fancy-button {
+    background-color: white;
+    color: #1976d2;
+}
+
+.fancy-button i.material-icons {
+    color: #1976d2;
+    padding-right: 4px;
+}

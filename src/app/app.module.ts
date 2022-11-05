@@ -13,6 +13,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { ShippingComponent } from './shipping/shipping.component';
 import { LoginComponent } from './login/login.component';
 import { BoardComponent } from './board/board.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { BoardComponent } from './board/board.component';
       { path: 'cart', component: CartComponent },
       { path: 'shipping', component: ShippingComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
       { path: 'board', component: BoardComponent },
     ])
   ],
@@ -37,7 +39,8 @@ import { BoardComponent } from './board/board.component';
     CartComponent,
     ShippingComponent,
     LoginComponent,
-    BoardComponent
+    BoardComponent,
+    RegisterComponent
   ],
   bootstrap: [
     AppComponent

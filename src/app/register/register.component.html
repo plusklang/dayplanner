@@ -1,4 +1,11 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="mt-8">
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="mt-8">
+
+    <div>
+        <label for="name">
+            Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
     <div>
         <label for="username">
             Username
@@ -12,14 +19,10 @@
         </label>
         <input id="password" type="text" formControlName="password">
     </div>
-    <button class="btn" type="submit">Login</button>
+    <button type="button" (click)="onRegister()">Register</button>
     <div class="mt-2" *ngIf="status.message">
         <span [ngClass]="{'is--error': status.isError}">
             {{ status.message }}
         </span>
-    </div>
-    <p class="mt-8">Need an account?</p>
-    <div>
-        <a class="btn is--secondary" routerLink="/register">Register</a>
     </div>
 </form>
