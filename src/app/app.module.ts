@@ -14,6 +14,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { LoginComponent } from './login/login.component';
 import { BoardComponent } from './board/board.component';
 import { RegisterComponent } from './register/register.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   imports: [
@@ -21,13 +22,13 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
+      { path: '', component: LoadingComponent },
+      { path: 'board', component: BoardComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
       { path: 'shipping', component: ShippingComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'board', component: BoardComponent },
     ])
   ],
   declarations: [
@@ -40,7 +41,8 @@ import { RegisterComponent } from './register/register.component';
     ShippingComponent,
     LoginComponent,
     BoardComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoadingComponent
   ],
   bootstrap: [
     AppComponent

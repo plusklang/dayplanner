@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+import { ApiService } from './api.service';
+import { Router } from '@angular/router';
+import { Task, User } from './types';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +10,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(
+      private auth: AuthService,
+      private api: ApiService,
+      private router: Router
+  ) {}
+
+  async ngOnInit() {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      this.router.navigate(['/login']).then()
+    }
+    if (this.auth.user) return
+    this.api.get<{user: User}>('/config').subscribe({
+      next: (res) => {
+        this.auth.user = res.user
+        this.router.navigate(['/board'])
+        console.log('loaded user', res.user)
+      }
+    })
+  }
 }
 
 

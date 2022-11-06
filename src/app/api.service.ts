@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,13 +14,12 @@ export class ApiService {
 
     constructor(
         private auth: AuthService,
-        private http: HttpClient
+        private http: HttpClient,
+        private router: Router
     ) {}
 
-    private static getHeaders(): HttpHeaders {
-
+    private getHeaders(): HttpHeaders {
         const token = localStorage.getItem('token')
-        console.log('token from storage:', token)
         return new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`

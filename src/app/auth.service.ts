@@ -8,24 +8,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private loggedIn!: boolean
+  private _loggedIn!: boolean
   private accessToken!: string
   private _user!: User
   constructor(
       private http: HttpClient,
-  ) { }
-
-  isLoggedIn(): boolean {
-    return this.loggedIn
-  }
-
-  setLoggedIn(user: User): void {
-    this.loggedIn = true
-    this._user = user
-  }
+  ) {}
 
   get user(): User {
     return this._user
+  }
+
+  set user(user: User) {
+    this._user = user
   }
 
   login(username: string, password: string): Observable<any> {
@@ -40,11 +35,11 @@ export class AuthService {
             console.log('login res inside tap', res)
             const response = res as LoginResponse
             this.accessToken = response.accessToken
+            localStorage.setItem('token', this.accessToken)
             this._user = {
               name: response.name,
               username: response.username
             }
-            localStorage.setItem('token', this.accessToken)
             console.log("saved user", this._user)
           },
           error: (error: any) => {
