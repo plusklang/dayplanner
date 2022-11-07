@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { LoginResponse } from './types';
 
 
 @Injectable({
@@ -43,7 +44,16 @@ export class ApiService {
             reportProgress: undefined,
             responseType: 'json',
             withCredentials: undefined,
-        })
+        }).pipe(
+            tap({
+                error: (error: HttpErrorResponse) => {
+                    console.log('Error at get request', error)
+                    if (error.status === 403) {
+                        this.router.navigate(['/login']).then()
+                    }
+                }
+            })
+        )
     }
 
     delete<T>(

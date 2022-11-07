@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
             this.loginForm.value.username || '',
             this.loginForm.value.password || '').subscribe({
             next: () => {
-                this.router.navigate(['/board']).then()
+                this.router.navigate(['']).then()
 
             },
             error: (error: any) => {

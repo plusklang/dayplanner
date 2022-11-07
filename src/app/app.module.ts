@@ -22,8 +22,7 @@ import { LoadingComponent } from './loading/loading.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: LoadingComponent },
-      { path: 'board', component: BoardComponent },
+      { path: '', component: BoardComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
       { path: 'shipping', component: ShippingComponent },

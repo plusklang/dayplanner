@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private _loggedIn!: boolean
   private accessToken!: string
   private _user!: User
   constructor(
