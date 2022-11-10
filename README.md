@@ -5,7 +5,7 @@ A simple daily tasks planner.
 An minimalistic and clear user interface lets you focus on the core functionality: Adding daily tasks easy and fast.
 
 ## Instant overview of your most important task of the day
-Your tasks you have to do today are shown instantly on the initial screen.
+The tasks you have to do today are shown instantly on the initial screen.
 Additionaly you have two more priority lists, for the tasks you should try today and task you could maybe do today.
 
 ## Estimate your tasks duration
