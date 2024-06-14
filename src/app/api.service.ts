@@ -21,10 +21,11 @@ export class ApiService {
 
     private getHeaders(): HttpHeaders {
         const token = localStorage.getItem('token')
-        return new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        })
+        const headers: Record<string, string> = {
+            'Content-Type': 'application/json'
+        }
+        if (token) headers['Authorization'] = `Bearer ${token}`
+        return new HttpHeaders(headers)
     }
 
     private getUrl(relativePath: string) {
@@ -49,6 +50,9 @@ export class ApiService {
                 error: (error: HttpErrorResponse) => {
                     console.log('Error at get request', error)
                     if (error.status === 403) {
+                        this.router.navigate(['/login']).then()
+                    }
+                    if (error.status === 401) {
                         this.router.navigate(['/login']).then()
                     }
                 }

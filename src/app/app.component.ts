@@ -45,8 +45,10 @@ export class AppComponent {
   }
 
   async ngOnInit() {
+    console.log('ngOnInit')
     const token = localStorage.getItem('token')
     if (!token) {
+      console.log('no token found!!!')
       this.router.navigate(['/login']).then()
     }
     if (this.auth.user) return

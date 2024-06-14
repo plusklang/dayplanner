@@ -52,6 +52,10 @@ export class RegisterComponent implements OnInit {
           this.status.isError = true
           this.status.message = 'Username already existing! Please choose a different username'
         }
+        else {
+          this.status.isError = true
+          this.status.message = `Unbekannter Fehler beim Login: ${e.message}`
+        }
       }
     })
   }
